@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:datingapp/main/util/common.dart';
+import 'package:datingapp/main/util/share_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:io';
@@ -9,12 +11,29 @@ import 'package:path_provider/path_provider.dart';
 
 class HomeLogic extends GetxController {
   XFile? pickedFile;
+  PageController pageController = PageController();
+  int pageIndex = 0;
+
+  int loveDays = 0;
 
   XFile? fImage1;
   XFile? fImage2;
 
   final String nameImage1 = "image1";
   final String nameImage2 = "image2";
+
+  String nameOfMan = "Hiển";
+  String nameOfWoman = "Thơ";
+
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void openDrawer() {
+    scaffoldKey.currentState!.openDrawer();
+  }
+
+  void closeDrawer() {
+    scaffoldKey.currentState!.closeDrawer();
+  }
 
   @override
   void onInit() {
@@ -23,6 +42,7 @@ class HomeLogic extends GetxController {
     loadImage(nameImage1);
     loadImage(nameImage2);
     loadImage("image");
+    getDays();
   }
 
   Future pickImageFromGallery(String name) async {
@@ -63,5 +83,16 @@ class HomeLogic extends GetxController {
       }
       update();
     }
+  }
+
+  getDays() async {
+    loveDays = await SharedPreferenceUtil.getDays();
+    update();
+  }
+
+  getName() async {
+    nameOfMan = await SharedPreferenceUtil.getManName();
+    nameOfWoman = await SharedPreferenceUtil.getWomanName();
+    update();
   }
 }
