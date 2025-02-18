@@ -1,7 +1,8 @@
 import 'package:datingapp/main/res/app_style.dart';
 import 'package:datingapp/main/ui/drawer_logic.dart';
-import 'package:datingapp/main/ui/setting/change_date_page.dart';
-import 'package:datingapp/main/ui/setting/change_name_page.dart';
+import 'package:datingapp/main/ui/notification/notification_page.dart';
+import 'package:datingapp/main/ui/setting_page/change_date_page.dart';
+import 'package:datingapp/main/ui/setting_page/change_name_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -69,7 +70,7 @@ class DrawerPage extends StatelessWidget {
                         ),
                         "Notification"),
                     onTap: () {
-                      Get.to(ChangeName());
+                      Get.to(Notipage());
                     },
                   ),
                   // ExpansionTile(

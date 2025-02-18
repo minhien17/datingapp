@@ -33,8 +33,6 @@ class ChangeNameLogic extends GetxController {
   }
 
   saveName() async {
-    // nameOfMan = textMan;
-    // nameOfWoman = textWoman;
     await SharedPreferenceUtil.saveManName(textMan);
     await SharedPreferenceUtil.saveWomanName(textWoman);
     Get.back();
@@ -43,7 +41,8 @@ class ChangeNameLogic extends GetxController {
 
   saveDate() async {
     print("save");
-    await SharedPreferenceUtil.saveLoveDay(Common().caculateDays(date));
+    String loveDay = Common().switchDateToString(date);
+    await SharedPreferenceUtil.saveLoveDay(loveDay);
     Get.back();
     Get.find<HomeLogic>().getDays();
   }

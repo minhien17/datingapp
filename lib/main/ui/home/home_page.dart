@@ -122,7 +122,23 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           Center(
-                            child: Text("<3 31/07/2024 "),
+                            child: Container(
+                                padding: EdgeInsets.all(20),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors.grey,
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    tim(controller.loveDays ~/ 365, "Năm"),
+                                    tim(controller.loveDays ~/ 30, "Tháng"),
+                                    tim((controller.loveDays % 30) ~/ 7,
+                                        "Tuần"),
+                                    tim(controller.loveDays % 7, "Ngày")
+                                  ],
+                                )),
                           ),
                         ],
                       ),
@@ -274,5 +290,34 @@ class HomePage extends StatelessWidget {
             ),
           );
         });
+  }
+
+  Widget tim(int count, String type) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Stack(
+          children: [
+            SizedBox(
+              height: 80,
+              child: Image.asset("assets/image/tim.png"),
+            ),
+            SizedBox(
+              height: 80,
+              width: 80,
+              child: Center(
+                  child: Text(
+                "${count}",
+                style: AppStyles.textName,
+              )),
+            ),
+          ],
+        ),
+        Text(
+          type,
+          style: AppStyles.title.copyWith(fontSize: 20),
+        )
+      ],
+    );
   }
 }

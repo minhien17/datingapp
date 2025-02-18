@@ -43,6 +43,7 @@ class HomeLogic extends GetxController {
     loadImage(nameImage2);
     loadImage("image");
     getDays();
+    getName();
   }
 
   Future pickImageFromGallery(String name) async {
@@ -86,7 +87,8 @@ class HomeLogic extends GetxController {
   }
 
   getDays() async {
-    loveDays = await SharedPreferenceUtil.getDays();
+    String loveDay = await SharedPreferenceUtil.getLoveDay();
+    loveDays = Common().caculateDays(loveDay);
     update();
   }
 

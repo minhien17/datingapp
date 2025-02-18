@@ -1,4 +1,4 @@
-import 'package:datingapp/main/ui/setting/change_name_logic.dart';
+import 'package:datingapp/main/ui/setting_page/change_name_logic.dart';
 import 'package:datingapp/main/util/common.dart';
 import 'package:datingapp/main/util/dialog_util.dart';
 import 'package:flutter/material.dart';

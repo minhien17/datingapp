@@ -17,9 +17,9 @@ class SharedPreferenceUtil {
     await prefs.setString(Key.Key_Woman_Name, name);
   }
 
-  static Future saveLoveDay(int days) async {
+  static Future saveLoveDay(String date) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(Key.Key_Love_Day, days);
+    await prefs.setString(Key.Key_Love_Day, date);
   }
 
   static Future<String> getManName() async {
@@ -32,8 +32,8 @@ class SharedPreferenceUtil {
     return prefs.getString(Key.Key_Woman_Name) ?? "Thơ";
   }
 
-  static Future<int> getDays() async {
+  static Future<String> getLoveDay() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getInt(Key.Key_Love_Day) ?? 0;
+    return prefs.getString(Key.Key_Love_Day) ?? "31/07/2024";
   }
 }
